@@ -31,3 +31,12 @@ footer {
 .sx {
   transform: scaleX(-1);
 }
+
+.read{
+  background-color: transparent;
+  color: blue;
+  border: transparent;
+}
+.read:hover{
+  color: rgb(79, 79, 160);
+}
