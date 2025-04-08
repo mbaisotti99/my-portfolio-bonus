@@ -7,12 +7,21 @@ import ProjCard from "../components/ProjCard"
 const Projects = () => {
 
     const [projs, setProjs] = useState([])
-
+    const [curPage, setCurPage] = useState(0)
+    
+    let paginatedArr = []
     useEffect(() => {
         axios
-            .get(`http://127.0.0.1:8000/api/projects`)
-            .then((resp) => {
-                setProjs(resp.data.data)
+        .get(`http://127.0.0.1:8000/api/projects`)
+        .then((resp) => {
+            setProjs(resp.data.data)
+            
+            if (projs.length > 10){
+                for (let i = 0; i < Math.floor(projs.length / 10); i++)
+                    paginatedArr.push(
+                        projs.slice(i, i + 9)
+                    )
+                }
             })
     }, [])
 
@@ -21,7 +30,7 @@ const Projects = () => {
             <h1 className="text-center mt-5">Projects</h1>
             <div className="row">
             {
-                (projs.length > 0) && projs.map((curProj, i) => {
+                (projs.length) ? projs.map((curProj, i) => {
                     return (
                         <div className="col-6">
                             <ProjCard 
@@ -36,6 +45,10 @@ const Projects = () => {
                         </div>
                     )
                 })
+                :
+                <div className="cent">
+                <img src="/loading.gif" alt="Loading" className="loading" />
+            </div>
             }
             </div>
         </>

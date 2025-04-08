@@ -6,7 +6,7 @@ const ProjCard = ({ id, titolo, cliente, desc, data, techs, devs }) => {
         let descriz = document.getElementById(`shortDesc${n}`)
         let longDesc = document.getElementById(`fullDesc${n}`)
         let readLess = document.createElement("button")
-        let readMore = document.getElementById("more")
+        let readMore = document.getElementById(`more${n}`)
         let cont = document.getElementById(`descrizione${n}`)
         readLess.classList.add("read")  
         readLess.id = `readL${n}`
@@ -23,7 +23,7 @@ const ProjCard = ({ id, titolo, cliente, desc, data, techs, devs }) => {
         let descriz = document.getElementById(`shortDesc${n}`)
         let longDesc = document.getElementById(`fullDesc${n}`)
         let readLess = document.getElementById(`readL${n}`)
-        let readMore = document.getElementById("more")
+        let readMore = document.getElementById(`more${n}`)
 
         readLess.remove()
         readMore.classList.remove("d-none")
@@ -52,7 +52,7 @@ const ProjCard = ({ id, titolo, cliente, desc, data, techs, devs }) => {
                             {desc}
                         </p>
                         {desc.length > 200 ? <button type="button" 
-                        onClick={() => expand(id)} className="read" id="more">Leggi di più  </button> : ""}
+                        onClick={() => expand(id)} className="read" id={`more${id}`}>Leggi di più  </button> : ""}
                     </p>
                 </div>
                 <div className="devs">
@@ -63,6 +63,7 @@ const ProjCard = ({ id, titolo, cliente, desc, data, techs, devs }) => {
                         </b>
                     </p>
                 </div>
+                <a href={`/${id}`} className="btn btn-primary">Dettagli</a>
                 <div className="card-footer text-body-secondary">
                     {data}
                 </div>

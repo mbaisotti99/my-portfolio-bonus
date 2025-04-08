@@ -18,7 +18,7 @@ const Devs = () => {
         <>
             <h1 className="text-center">I nostri Sviluppatori</h1>
             <div className="row">
-                {(devs.length > 0) && devs.map((dev) => {
+                {(devs.length > 0) ? devs.map((dev) => {
                     return (
                         <div className="col-6">
                             <DevCard
@@ -26,7 +26,13 @@ const Devs = () => {
                             />
                         </div>
                     )
-                })}
+                })
+            :
+            <div className="cent">
+                <img src="/loading.gif" alt="Loading" className="loading" />
+            </div>
+            
+            }
             </div>
         </>
     )
